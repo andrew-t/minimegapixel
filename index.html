@@ -7,11 +7,13 @@
 	<script type="text/javascript" src="upload.js"></script>
 	<script type="text/javascript" src="crop.js"></script>
 	<script type="text/javascript" src="window.js"></script>
-
-	<script type="text/javascript" src="cropperjs/dist/cropper.min.js"></script>
+	<script type="text/javascript" src="pens.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="style.css">
 
+	<script type="text/javascript" src="invert.js"></script>
+
+	<script type="text/javascript" src="cropperjs/dist/cropper.min.js"></script>
 	<link  href="cropperjs/dist/cropper.min.css" rel="stylesheet">
 </head>
 <body>
@@ -31,6 +33,32 @@
 		</form></ul>
 	</section>
 
+	<section class="step" data-js="startPens">
+		<h1>Tell us about your pens.</h1>
+		<p>Upload a photo</p>
+		<form id="pens-form"><ul>
+			<li>
+				<label for="pack">pack</label>
+				<select name="pack" id="pack">
+					<option value="f43353,0aa453,0d6ae9">Edding</option>
+					<!--option>Sharpie</option-->
+					<option value="ff0000,00ff00,0000ff">Ideal</option>
+					<option value="">Custom</option>
+				</select>
+			</li><li>
+				<label for="red">red</label>
+				<input type="color" name="red" id="red">
+			</li><li>
+				<label for="green">green</label>
+				<input type="color" name="green" id="green">
+			</li><li>
+				<label for="blue">blue</label>
+				<input type="color" name="blue" id="blue">
+			</li>
+			<input type="submit" id="pens-done" value="Next">
+		</form></ul>
+	</section>
+
 	<section class="step" data-js="startUpload">
 		<h1>Choose a photo</h1>
 		<p>Upload a photo</p>
@@ -43,11 +71,12 @@
 		<div id="crop-container"><canvas id="upload-target"></canvas></div>
 		<button id="crop-button">Crop</button>
 	</section>
-	
-	<section class="step" data-js="">
+
+	<section class="step" data-js="startData">
 		<h1>Data!</h1>
 		<p>Hello</p>
 		<canvas id="cropped-image"></canvas>
+		<table id="numbers"></table>
 	</section>
 </body>
 </html>
