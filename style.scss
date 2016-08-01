@@ -1,0 +1,32 @@
+---
+---
+
+#drop-target {
+	padding: 20px;
+	border: 1px solid black;
+	&.hover {
+		background: #000;
+		color: #fff;
+	}
+}
+
+// as per https://github.com/fengyuanchen/cropperjs
+
+/* Limit image width to avoid overflow the container */
+#crop-container {
+	display: block;
+	height: 400px;
+	width: 400px;
+}
+#upload-target {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+  max-height: 100%;
+}
+
+.step {
+
+}
+
+.hidden {
+	display: none;
+}
