@@ -99,9 +99,9 @@ function calculate() {
 	hTable.innerHTML = '';
 	h.forEach(function (bin) {
 		var row = document.createElement('tr');
-			if (bin.low >= 1)
+			if (bin.low > 0.999)
 				row.classList.add('high');
-			else if (bin.high <= 0)
+			else if (bin.high < 0.001)
 				row.classList.add('low');
 			else
 				row.classList.add('ok');
