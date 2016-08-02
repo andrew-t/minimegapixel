@@ -21,7 +21,7 @@ function showPreview() {
 	// box(0, 0, canvas.width, canvas.height, frame);
 	for (var x = 0; x < width; ++x)
 		for (var y = 0; y < height; ++y) {
-			var pixel = v2[x + y * height];
+			var pixel = v2[x + y * width];
 
 			// the real way:
 			var grid = pixelizer(pixel);

@@ -53,6 +53,32 @@ table.pixels {
 	}
 }
 
+table.histogram {
+	width: 100%;
+	th {
+		width: 12em;
+	}
+	td.count {
+		width: 3em;
+	}
+	td.bar {
+		width: calc(100% - 15em);
+		> div {
+			display: inline-block;
+			height: 1em;
+		}
+	}
+	tr.high td.bar > div {
+		background: red;
+	}
+	tr.low td.bar > div {
+		background: red;
+	}
+	tr.ok td.bar > div {
+		background: green;
+	}
+}
+
 .hidden {
 	display: none;
 }

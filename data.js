@@ -36,10 +36,11 @@ function calculate() {
 
 	// generate the data for display
 	var brightness = parseFloat(document.getElementById('brightness').value) / 100;
-	idealV2 = mmult(v, calibration);
+	idealV2 = mmult(v, calibration).map(function (p) {
+			return p.map(function(v) { return v * brightness; })
+		});
 	v2 = idealV2.map(function (p) {
-			return p.map(function (v) { return v * brightness; })
-				.map(function (v) {
+			return p.map(function (v) {
 					return Math.round(v * cellsPerPixelColour);
 				})
 				.map(function (v) {
@@ -90,6 +91,35 @@ function calculate() {
 			else sheet.addRule(rule, (sheet.cssRules || sheet.rules).length);
 		}
 	} catch(e) { console.log(e); }
+
+	// generate a report
+	var h = histogram(flatten(idealV2), -1, 2, 0.1),
+		max = Math.max.apply(null, h.map(function(bin) { return bin.count; })),
+		hTable = document.getElementById('histogram');
+	hTable.innerHTML = '';
+	h.forEach(function (bin) {
+		var row = document.createElement('tr');
+			if (bin.low >= 1)
+				row.classList.add('high');
+			else if (bin.high <= 0)
+				row.classList.add('low');
+			else
+				row.classList.add('ok');
+			var cell = document.createElement('th');
+				cell.appendChild(document.createTextNode(bin.name));
+			row.appendChild(cell);
+			cell = document.createElement('td');
+				cell.classList.add('count');
+				cell.appendChild(document.createTextNode(bin.count));
+			row.appendChild(cell);
+			cell = document.createElement('td');
+				cell.classList.add('bar');
+				var bar = document.createElement('div');
+					bar.style.width = (bin.count * 100 / max) + '%';
+				cell.appendChild(bar);
+			row.appendChild(cell);
+		hTable.appendChild(row);
+	});
 
 	// show the preview image
 	showPreview();
