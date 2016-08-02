@@ -8,6 +8,7 @@
 		background: #000;
 		color: #fff;
 	}
+	height: calc(100vh - 20em);
 }
 
 // as per https://github.com/fengyuanchen/cropperjs
@@ -23,8 +24,73 @@
   max-height: 100%;
 }
 
+body {
+	background: #000;
+}
 .step {
+	background: #202020;
+	color: white;
+	h1, h2 {
+		color: #ccc;
+		font-family: Quicksand,'Open Sans',Helvetica,Arial,Verdana,sans-serif;
+		font-weight: lighter;
+	}
+	font-family: 'Open Sans',Helvetica,Arial,Verdana,sans-serif;
+	padding: 1em 2em;
+	position: absolute;
+	left: 2em;
+	right: 2em;
+	margin: 2em;
+	min-height: calc(100vh - 8em);
+	img, canvas {
+		max-width: 100%;
+	}
+}
 
+.collapsable {
+	max-width: 100%;
+	overflow: auto;
+	> *:first-child {
+		cursor: pointer;
+		&:before {
+			display: inline-block;
+			width: 1.5em;
+		}
+	}
+	&:not(.collapsed) {
+		> *:first-child {
+			&:before {
+				content: '\25be';
+			}
+		}
+		> *:nth-child(n + 2) {
+
+		}
+	}
+	&.collapsed {
+		> *:first-child {
+			&:before {
+				content: '\25b8';
+			}
+		}
+		> *:nth-child(n + 2) {
+			display: none;
+		}
+	}
+}
+
+form > ul {
+	list-style: none;
+	> li {
+		list-style: none;
+		> label {
+			display: inline-block;
+			min-width: 10em;
+			&:after {
+				content: ':'
+			}
+		}
+	}
 }
 
 table.pixels {

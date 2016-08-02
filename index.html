@@ -6,6 +6,7 @@
 	<script type="text/javascript" src="once.js"></script>
 	<script type="text/javascript" src="multiply.js"></script>
 	<script type="text/javascript" src="histogram.js"></script>
+	<script type="text/javascript" src="collapse.js"></script>
 
 	<script type="text/javascript" src="steps.js"></script>
 
@@ -20,6 +21,9 @@
 
 	<script type="text/javascript" src="cropperjs/dist/cropper.min.js"></script>
 	<link  href="cropperjs/dist/cropper.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" id="Quicksand-webfonts-css" href="//fonts.googleapis.com/css?family=Quicksand:400italic,700italic,400,700&amp;subset=latin,latin-ext" type="text/css" media="all">
+	<link rel="stylesheet" id="Open-sans-webfonts-css" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&amp;subset=latin,latin-ext" type="text/css" media="all">
 </head>
 <body>
 
@@ -45,7 +49,7 @@
 		<h1>Choose a photo</h1>
 		<p>Drag a photo from your computer onto this panel:</p>
 		<div id="drop-target">drop here</div>
-		<button class="back">Back</button>
+		<!--button class="back">Back</button-->
 	</section>
 
 	<section class="step" data-js-start="startCrop" data-js-end="endCrop">
@@ -86,17 +90,30 @@
 	</section>
 
 	<section class="step" data-js-start="startData">
-		<h1>Data!</h1>
+		<h1>Data</h1>
 		<p>Your data is ready:</p>
-		<canvas id="cropped-image"></canvas>
+		<div class="collapsable">
+			<h2>Real image</h2>
+			<canvas id="cropped-image"></canvas>
+		</div>
 		<form>
 			<label for="brightness">Brightness</label>
 			<input type="range" id="brightness" name="brightness"
 				min="0" max="500" value="100">
 		</form>
-		<canvas id="preview"></canvas>
-		<table id="numbers" class="pixels"></table>
-		<table id="histogram" class="histogram"></table>
+		<div class="collapsable">
+			<h2>Preview image</h2>
+			<canvas id="preview"></canvas>
+		</div>
+		<div class="collapsable">
+			<h2>Pixel values</h2>
+			<table id="numbers" class="pixels"></table>
+		</div>
+		<div class="collapsable">
+			<h2>Quality histogram</h2>
+			<p>(Description text TK.)</p>
+			<table id="histogram" class="histogram"></table>
+		</div>
 		<button class="back">Back</button>
 	</section>
 </body>

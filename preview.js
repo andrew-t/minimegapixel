@@ -17,6 +17,8 @@ function showPreview() {
 		ctx = canvas.getContext('2d');
 	canvas.width = pixSize * width;
 	canvas.height = pixSize * height;
+	document.getElementById('cropped-image').style.width =
+		pixSize * width + 'px';
 	ctx = canvas.getContext('2d');
 	// box(0, 0, canvas.width, canvas.height, frame);
 	for (var x = 0; x < width; ++x)
