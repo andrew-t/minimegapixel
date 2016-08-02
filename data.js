@@ -76,7 +76,8 @@ function startData(multiplier) {
 					', 0.2) !important;' +
 				'}';
 			if (sheet.insertRule) sheet.insertRule(rule, sheet.cssRules.length);
-			else sheet.addRule(rule, sheet.cssRules.length); // nonstandard fallback
+			// nonstandard fallback:
+			else sheet.addRule(rule, (sheet.cssRules || sheet.rules).length);
 		}
 		// for (var j = 0; j < document.styleSheets.length; ++j) {
 		// 	var rules = document.styleSheets[0].cssRules,
