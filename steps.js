@@ -13,13 +13,19 @@ function setStep(n) {
 	for (var element, i = 1;
 			element = document.getElementById('step-' + i);
 			++i)
-		if (i != n)
-			element.classList.add('hidden');
-		else {
+		if (i != n) {
+			if (!element.classList.contains('hidden')) {
+				element.classList.add('hidden');
+			}
+		} else {
 			element.classList.remove('hidden');
-			var start = element.getAttribute('data-js');
-			if (start) window[start]();
+			run(element, 'start');
 		}
+}
+
+function run(element, key) {
+	var func = element.getAttribute('data-js-' + key);
+	if (func && window[func]) window[func]();
 }
 
 function nextStep() {
