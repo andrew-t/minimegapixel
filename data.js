@@ -79,19 +79,6 @@ function startData(multiplier) {
 			// nonstandard fallback:
 			else sheet.addRule(rule, (sheet.cssRules || sheet.rules).length);
 		}
-		// for (var j = 0; j < document.styleSheets.length; ++j) {
-		// 	var rules = document.styleSheets[0].cssRules,
-		// 		matcher = /^.*\s+tr:nth-child\(3n\s*\+\s*(\d)\)$/;
-		// 	for (var i = 0; i < rules.length; ++i) {
-		// 		var rule = rules[i],
-		// 			n = rule.selectorText.replace(matcher, '$1');
-		// 		if (n == rule.selectorText)
-		// 			continue;
-		// 		n = parseInt(n, 10) - 1;
-		// 		rule.style['background-color'] =
-		// 			'rgba(' + pens[n].join(', ') + ', 0.2)';
-		// 	}
-		// }
 	} catch(e) { console.log(e); }
 
 	// show the preview image
