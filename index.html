@@ -91,27 +91,30 @@
 
 	<section class="step" data-js-start="startData">
 		<h1>Data</h1>
-		<p>Your data is ready:</p>
-		<div class="collapsable">
-			<h2>Real image</h2>
-			<canvas id="cropped-image"></canvas>
-		</div>
+		<p>Your data is ready.</p>
 		<form>
 			<label for="brightness">Brightness</label>
 			<input type="range" id="brightness" name="brightness"
 				min="0" max="500" value="100">
 		</form>
 		<div class="collapsable">
+			<h2>Real image</h2>
+			<p>This has been scaled up to match the preview image.</p>
+			<canvas id="cropped-image"></canvas>
+		</div>
+		<div class="collapsable">
 			<h2>Preview image</h2>
+			<p>This is made up of small pixels in the colour of your pens, to give an idea what the final Mini-Megapixel will look like. Adjust the brightness slider until this looks good.</p>
 			<canvas id="preview"></canvas>
 		</div>
 		<div class="collapsable">
 			<h2>Pixel values</h2>
+			<p>This table should copy-paste into spreadsheet software such as Excel. Each square denotes the number of cells you should colour in each colour. (Other cells should be coloured black.)</p>
 			<table id="numbers" class="pixels"></table>
 		</div>
 		<div class="collapsable">
 			<h2>Quality histogram</h2>
-			<p>(Description text TK.)</p>
+			<p>Depending on your pens and image, the colour correction step can reccomend colouring more squares than there are, or fewer than zero. Those cases are represented by the red bars in this histogram. If the red bars are high (and the preview image looks bad) then you should adjust the brightness slider down.</p>
 			<table id="histogram" class="histogram"></table>
 		</div>
 		<button class="back">Back</button>
