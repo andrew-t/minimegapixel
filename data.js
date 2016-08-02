@@ -5,10 +5,19 @@ var v = [], // raw image data
 
 var cellsPerPixelColour = 10;
 
-function startData(multiplier) {
-	if (!multiplier)
-		multiplier = 1;
+var doStartData = once(function () {
+	document.getElementById('brightness')
+		.addEventListener('change', function(e) {
+			e.preventDefault();
+			calculate();
+		});
+});
+function startData() {
+	doStartData();
+	calculate();
+}
 
+function calculate() {
 	// read the image
 	var canvas = document.getElementById('cropped-image'),
 		ctx = canvas.getContext('2d'),
@@ -26,9 +35,10 @@ function startData(multiplier) {
 		}
 
 	// generate the data for display
+	var brightness = parseFloat(document.getElementById('brightness').value) / 100;
 	idealV2 = mmult(v, calibration);
 	v2 = idealV2.map(function (p) {
-			return p.map(function (v) { return v * multiplier; })
+			return p.map(function (v) { return v * brightness; })
 				.map(function (v) {
 					return Math.round(v * cellsPerPixelColour);
 				})
