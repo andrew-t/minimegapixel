@@ -1,6 +1,6 @@
 // https://davidwalsh.name/resize-image-canvas
 
-function startUpload() {
+var startUpload = once(function startUpload() {
 	var target = document.getElementById("drop-target");
 	target.addEventListener("dragover", function(e) {
 		e.preventDefault();
@@ -15,7 +15,7 @@ function startUpload() {
 		e.preventDefault();
 		target.classList.remove('hover');
 	}, true);
-}
+});
 
 function loadImage(src) {
 	//	Prevent any non-image file type from being read.

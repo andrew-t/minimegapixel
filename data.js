@@ -63,6 +63,36 @@ function startData(multiplier) {
 		}
 	}
 
+	// style the table rows
+	// this is a bit quick and dirty but should work well enough
+	try {
+		var sheet = document.styleSheets[0];
+		for (var i = 0; i < 3; ++i) {
+			var rule = 'table.pixels tr:nth-child(3n + ' + (i + 1) + ') {' +
+					'background: rgba(' + pens[i]
+						.map(function(v) { return Math.round(v * 255); })
+						.map(function(v) { return (v < 255) ? (v > 0) ? v : 0 : 255; })
+						.join(', ') +
+					', 0.2) !important;' +
+				'}';
+			if (sheet.insertRule) sheet.insertRule(rule, sheet.cssRules.length);
+			else sheet.addRule(rule, sheet.cssRules.length); // nonstandard fallback
+		}
+		// for (var j = 0; j < document.styleSheets.length; ++j) {
+		// 	var rules = document.styleSheets[0].cssRules,
+		// 		matcher = /^.*\s+tr:nth-child\(3n\s*\+\s*(\d)\)$/;
+		// 	for (var i = 0; i < rules.length; ++i) {
+		// 		var rule = rules[i],
+		// 			n = rule.selectorText.replace(matcher, '$1');
+		// 		if (n == rule.selectorText)
+		// 			continue;
+		// 		n = parseInt(n, 10) - 1;
+		// 		rule.style['background-color'] =
+		// 			'rgba(' + pens[n].join(', ') + ', 0.2)';
+		// 	}
+		// }
+	} catch(e) { console.log(e); }
+
 	// show the preview image
 	showPreview();
 }

@@ -2,6 +2,10 @@
 <html>
 <head>
 	<title>Mini Megapixel</title>
+	<script type="text/javascript" src="invert.js"></script>
+	<script type="text/javascript" src="once.js"></script>
+	<script type="text/javascript" src="multiply.js"></script>
+
 	<script type="text/javascript" src="steps.js"></script>
 
 	<script type="text/javascript" src="upload.js"></script>
@@ -13,9 +17,6 @@
 
 	<link rel="stylesheet" type="text/css" href="style.css">
 
-	<script type="text/javascript" src="invert.js"></script>
-	<script type="text/javascript" src="multiply.js"></script>
-
 	<script type="text/javascript" src="cropperjs/dist/cropper.min.js"></script>
 	<link  href="cropperjs/dist/cropper.min.css" rel="stylesheet">
 </head>
@@ -23,64 +24,73 @@
 
 	<section class="step" data-js-start="startWindow">
 		<h1>Tell us about your window.</h1>
-		<p>Upload a photo</p>
-		<form id="window-form"><ul>
-			<li>
-				<label for="width">Width</label>
-				<input type="number" name="width" id="width">
-			</li><li>
-				<label for="height">Height</label>
-				<input type="number" name="height" id="height">
-			</li>
+		<p>How many pixels can you fit on there? They are 4cm squares.</p>
+		<form id="window-form">
+			<ul>
+				<li>
+					<label for="width">Width</label>
+					<input type="number" name="width" id="width">
+				</li><li>
+					<label for="height">Height</label>
+					<input type="number" name="height" id="height">
+				</li>
+			</ul>
 			<input type="submit" id="window-done" value="Next">
-		</form></ul>
-	</section>
-
-	<section class="step" data-js-start="startPens">
-		<h1>Tell us about your pens.</h1>
-		<p>Upload a photo</p>
-		<form id="pens-form"><ul>
-			<li>
-				<label for="pack">pack</label>
-				<select name="pack" id="pack">
-					<option value="f43353,0aa453,0d6ae9">Edding</option>
-					<!--option>Sharpie</option-->
-					<option value="ff0000,00ff00,0000ff">Ideal</option>
-					<option value="">Custom</option>
-				</select>
-			</li><li>
-				<label for="red">red</label>
-				<input type="color" name="red" id="red">
-			</li><li>
-				<label for="green">green</label>
-				<input type="color" name="green" id="green">
-			</li><li>
-				<label for="blue">blue</label>
-				<input type="color" name="blue" id="blue">
-			</li>
-			<input type="submit" id="pens-done" value="Next">
-		</form></ul>
+		</form>
+		<!--button class="back">Back</button-->
 	</section>
 
 	<section class="step" data-js-start="startUpload">
 		<h1>Choose a photo</h1>
-		<p>Upload a photo</p>
+		<p>Drag a photo from your computer onto this panel:</p>
 		<div id="drop-target">drop here</div>
+		<button class="back">Back</button>
 	</section>
 
-	<section class="step" data-js-start="startCrop">
+	<section class="step" data-js-start="startCrop" data-js-end="endCrop">
 		<h1>Crop your photo</h1>
-		<p>Crop your photo</p>
+		<p>Select an area of your photo to encode.</p>
 		<div id="crop-container"><canvas id="upload-target"></canvas></div>
 		<button id="crop-button">Crop</button>
+		<!--button class="back">Back</button-->
+	</section>
+
+	<section class="step" data-js-start="startPens">
+		<h1>Tell us about your pens.</h1>
+		<p>What colour do they look in digital photographs? If you are using Megapixel-approved Edding pens, just select that. The "Ideal" pen setting will assume your pens are "pure" red, green and blue and skip calibration.</p>
+		<form id="pens-form">
+			<ul>
+				<li>
+					<label for="pack">pack</label>
+					<select name="pack" id="pack">
+						<option value="f43353,0aa453,0d6ae9">Edding</option>
+						<!--option>Sharpie</option-->
+						<option value="ff0000,00ff00,0000ff">Ideal</option>
+						<option value="">Custom</option>
+					</select>
+				</li><li>
+					<label for="red">red</label>
+					<input type="color" name="red" id="red">
+				</li><li>
+					<label for="green">green</label>
+					<input type="color" name="green" id="green">
+				</li><li>
+					<label for="blue">blue</label>
+					<input type="color" name="blue" id="blue">
+				</li>
+			</ul>
+			<input type="submit" id="pens-done" value="Next">
+		</form>
+		<!--button class="back">Back</button-->
 	</section>
 
 	<section class="step" data-js-start="startData">
 		<h1>Data!</h1>
-		<p>Hello</p>
+		<p>Your data is ready:</p>
 		<canvas id="cropped-image"></canvas>
 		<canvas id="preview"></canvas>
 		<table id="numbers" class="pixels"></table>
+		<button class="back">Back</button>
 	</section>
 </body>
 </html>

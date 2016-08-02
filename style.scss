@@ -30,6 +30,8 @@
 table.pixels {
 	border: 1px solid black;
 	border-collapse: collapse;
+	background: white;
+	color: black;
 	tr {
 		// Apparently we number these from one.
 		&:nth-child(3n + 1) {
@@ -44,6 +46,7 @@ table.pixels {
 			background: #ccf;
 		}
 		td {
+			width: 2em;
 			border-left: 1px solid black;
 			border-right: 1px solid black;
 		}
