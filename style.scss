@@ -27,6 +27,29 @@
 
 }
 
+table.pixels {
+	border: 1px solid black;
+	border-collapse: collapse;
+	tr {
+		// Apparently we number these from one.
+		&:nth-child(3n + 1) {
+			border-top: 1px solid black;
+			background: #fcc;
+		}
+		&:nth-child(3n + 2) {
+			background: #cfc;
+		}
+		&:nth-child(3n) {
+			border-bottom: 1px solid black;
+			background: #ccf;
+		}
+		td {
+			border-left: 1px solid black;
+			border-right: 1px solid black;
+		}
+	}
+}
+
 .hidden {
 	display: none;
 }

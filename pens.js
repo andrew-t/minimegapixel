@@ -1,6 +1,7 @@
-// hardcode this for now:
+// hardcode gamma for now:
 var gamma = 2.2,
-	pens = [],
+	rawPens = [],
+	pens,
 	calibration;
 
 function startPens() {
@@ -28,7 +29,8 @@ function startPens() {
 			e.preventDefault();
 			var i = 0;
 			for (var pen in colours)
-				pens[i++] = hex2rgb(colours[pen].value);
+				rawPens[i++] = colours[pen].value;
+			pens = rawPens.map(hex2rgb);
 			console.log(JSON.stringify(pens, null, 2));
 			calibration = matrix_invert(pens);
 			console.log(JSON.stringify(calibration, null, 2));
