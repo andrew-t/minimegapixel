@@ -1,3 +1,3 @@
 [submodule "cropperjs"]
 	path = cropperjs
-	url = http://github.com/fengyuanchen/cropperjs.git
+	url = https://github.com/fengyuanchen/cropperjs.git
