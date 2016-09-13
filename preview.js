@@ -2,13 +2,13 @@
 
 var pixWidth = 5,
 	pixHeight = 2,
-	pixSize = 20,
-	xOffset = 2,
-	yOffset = 2,
-	channelOffset = 6,
-	subPixSize = 3,
+	pixSize = 6,
+	xOffset = 0,
+	yOffset = 0,
+	channelOffset = 2,
+	subPixSize = 1,
 	pixGap = 0,
-	subPixGap = 1,
+	subPixGap = 0,
 	black = '#121011',
 	frame = '#000000';
 

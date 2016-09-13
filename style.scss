@@ -44,6 +44,7 @@ body {
 	min-height: calc(100vh - 8em);
 	img, canvas {
 		max-width: 100%;
+		image-rendering: pixelated;
 	}
 }
 
