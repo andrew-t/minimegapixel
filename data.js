@@ -37,7 +37,7 @@ function calculate() {
 	// generate the data for display
 	var brightness = parseFloat(document.getElementById('brightness').value) / 100;
 	idealV2 = mmult(v, calibration).map(function (p) {
-			return p.map(function(v) { return v * brightness; })
+			return p.map(function(v) { return v * brightness; });
 		});
 	v2 = idealV2.map(function (p) {
 			return p.map(function (v) {
@@ -56,6 +56,7 @@ function calculate() {
 
 	// write the pixel data to the table
 	var excel = document.getElementById('numbers');
+	excel.innerHTML = '';
 	i = 0;
 	for (var y = 0; y < height; ++y) {
 		var rows = [];
