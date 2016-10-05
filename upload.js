@@ -15,16 +15,21 @@ var startUpload = once(function startUpload() {
 		e.preventDefault();
 		target.classList.remove('hover');
 	}, true);
+	var input = document.getElementById('upload-input');
+	input.addEventListener("change", function(e) {
+		e.preventDefault();
+		loadImage(input.files[0]);
+	}, true);
 });
 
 function loadImage(src) {
-	//	Prevent any non-image file type from being read.
-	if(!src.type.match(/image.*/)){
+	// Prevent any non-image file type from being read.
+	if (!src.type.match(/image.*/)){
 		console.log("The dropped file is not an image: ", src.type);
 		return;
 	}
 
-	//	Create our FileReader and run the results through the render function.
+	// Create our FileReader and run the results through the render function.
 	var reader = new FileReader();
 	reader.onload = function(e){
 		render(e.target.result);

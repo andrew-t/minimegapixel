@@ -61,8 +61,11 @@ function calculate() {
 	for (var y = 0; y < height; ++y) {
 		var rows = [];
 		for (var c = 0; c < 3; ++c) {
-			var row = document.createElement('tr');
+			var row = document.createElement('tr'),
+				titleCell = document.createElement('th');
 			excel.appendChild(row);
+			titleCell.innerHTML = ['Red', 'Green', 'Blue'][c];
+			row.appendChild(titleCell);
 			rows.push(row);
 		}
 		for (var x = 0; x < width; ++x) {
